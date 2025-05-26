@@ -33,27 +33,40 @@ public class Menu {
                 menuLivro();
                 opcaoCategoria = sc.nextInt(); sc.nextLine();
 
+                cadatras:
                 if(opcaoCategoria == 1){
-                    System.out.println("Qual o nome do livro?");
-                    String nome = sc.nextLine();
-
-                    System.out.println("Qual o autor do livro?");
-                    String autor = sc.nextLine();
-
-                    System.out.println("Qual o data de públicação do livro?");
-                    String dataPublicacao = sc.next();
-
-                    Livro livronovo = new Livro(nome, autor, dataPublicacao);
-
+                    cadastraLivro(sc, biblioteca);
 
                 } else if(opcaoCategoria == 2){
+                    biblioteca.listarLivros();
 
                 } else if (opcaoCategoria == 3) {
-
+                    System.out.println("Qual o nome do livro?");
+                    String nome = sc.nextLine();
+                    if (!biblioteca.buscarLivro(nome)){
+                        System.out.println("Livro não encontrado/Disponivel");
+                    }else{
+                        System.out.println("Livro disponivel");
+                    }
                 } else if (opcaoCategoria == 4) {
+                    System.out.println("Qual é o seu usuario?");
+                    String nome = sc.nextLine();
 
+                    if(!biblioteca.buscarUsuario(nome)){
+                        System.out.println("Usuario não cadastrado");
+                    }else {
+                        System.out.println("Qual o titulo do livro?");
+                        String titulo = sc.nextLine();
+
+                        if (!biblioteca.buscarLivro(titulo)) {
+                            System.out.println("Livro não encontrado/Disponivel");
+                        } else {
+                            System.out.println("Livro retirado com sucesso");
+                        }
+                    }
                 } else if (opcaoCategoria == 5) {
-
+                    cadastraLivro(sc, biblioteca);
+                    System.out.println("Livro devolvido");
                 }
             }
 
@@ -85,5 +98,19 @@ public class Menu {
         System.out.println("5 - Receber livro");
         System.out.println("-------------------------");
         System.out.println(" Digite a opção:");
+    }
+
+    private static void cadastraLivro(Scanner sc, Biblioteca biblioteca){
+        System.out.println("Qual o nome do livro?");
+        String nome = sc.nextLine();
+
+        System.out.println("Qual o autor do livro?");
+        String autor = sc.nextLine();
+
+        System.out.println("Qual o data de públicação do livro?");
+        String dataPublicacao = sc.next();
+
+        Livro livronovo = new Livro(nome, autor, dataPublicacao);
+        biblioteca.adicionarLivros(livronovo);
     }
 }

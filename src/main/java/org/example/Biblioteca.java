@@ -22,6 +22,15 @@ public class Biblioteca {
         }
     }
 
+    public boolean buscarUsuario(String nome){
+        for(Usuario u : usuarios){
+            if(u.getNome().equals(nome)){
+                return true;
+            }
+        }
+        return false;
+    }
+
     public void adicionarLivros(Livro l){
         this.livros.add(l);
     }
@@ -30,5 +39,14 @@ public class Biblioteca {
         for(Livro l : livros){
             System.out.println(l);
         }
+    }
+
+    public boolean buscarLivro(String nome){
+        for(Livro l : livros){
+            if(l.getTitulo().equals(nome)){
+                return true;
+            }
+        }
+        return false;
     }
 }

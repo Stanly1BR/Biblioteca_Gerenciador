@@ -32,6 +32,29 @@ public class Menu {
             }else if(opcao == 2){
                 menuLivro();
                 opcaoCategoria = sc.nextInt(); sc.nextLine();
+
+                if(opcaoCategoria == 1){
+                    System.out.println("Qual o nome do livro?");
+                    String nome = sc.nextLine();
+
+                    System.out.println("Qual o autor do livro?");
+                    String autor = sc.nextLine();
+
+                    System.out.println("Qual o data de públicação do livro?");
+                    String dataPublicacao = sc.next();
+
+                    Livro livronovo = new Livro(nome, autor, dataPublicacao);
+
+
+                } else if(opcaoCategoria == 2){
+
+                } else if (opcaoCategoria == 3) {
+
+                } else if (opcaoCategoria == 4) {
+
+                } else if (opcaoCategoria == 5) {
+
+                }
             }
 
         }while(opcao !=0);

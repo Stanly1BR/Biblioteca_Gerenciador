@@ -2,6 +2,8 @@ package org.example;
 
 import org.example.exceptions.LivroNaoEncontrado;
 import org.example.exceptions.UsuarioJaCadastrado;
+import org.example.model.LivroModel;
+import org.example.model.UsuarioModel;
 
 import java.util.Scanner;
 
@@ -30,7 +32,7 @@ public class Menu {
                         System.out.println("Qual o telefone do usuario?");
                         String telefone = sc.nextLine();
 
-                        Usuario usuarioNovo = new Usuario(nome, telefone);
+                        UsuarioModel usuarioNovo = new UsuarioModel(nome, telefone);
                         biblioteca.adicionaUsuario(usuarioNovo);
                     } else if (opcaoCategoria == 2) {
                         biblioteca.listarUsuarios();
@@ -127,7 +129,7 @@ public class Menu {
         System.out.println("Qual o data de públicação do livro?");
         String dataPublicacao = sc.next();
 
-        Livro livronovo = new Livro(nome, autor, dataPublicacao);
+        LivroModel livronovo = new LivroModel(nome, autor, dataPublicacao);
         biblioteca.adicionarLivros(livronovo);
     }
 }
